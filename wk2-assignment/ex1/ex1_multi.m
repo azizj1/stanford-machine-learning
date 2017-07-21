@@ -49,6 +49,7 @@ pause;
 % Scale features and set them to zero mean
 fprintf('Normalizing Features ...\n');
 
+ % you add the ones column after normalization! you'll get 0 for std, and then NaN for the values
 [X mu sigma] = featureNormalize(X);
 
 % Add intercept term to X
@@ -104,7 +105,11 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+newX = [1650 3];
+newX = newX - mu;
+newX = newX ./ sigma;
+newX = [1 newX];
+price = newX * theta; % You should change this
 
 
 % ============================================================
@@ -149,7 +154,8 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+newX = [1 1650 3]; % doesn't need to be normalized! :) 
+price = newX * theta; % You should change this
 
 
 % ============================================================
