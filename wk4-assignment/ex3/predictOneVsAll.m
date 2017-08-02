@@ -30,10 +30,9 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
-
-
-
+predictions = X*all_theta';
+[maxProb iMaxProb] = max(predictions, [], 2);
+p = iMaxProb;
 
 
 % =========================================================================
