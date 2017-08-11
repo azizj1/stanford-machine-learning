@@ -77,6 +77,7 @@ lambda = 0.1;
 [all_theta] = oneVsAll(X, y, num_labels, lambda);
 size(all_theta)
 size(X)
+size(y)
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
