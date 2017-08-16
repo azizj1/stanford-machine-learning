@@ -53,11 +53,20 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
+val_size = size(Xval, 1);
 
 for i = 1:m
-    theta = trainLinearReg(X(1:i,:), y(1:i,:), lambda);
-    error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
-    error_train(i) = linearRegCostFunction(X(1:i,:), y(1:i,:), theta, 0);
+    error_eval_for_i = zeros(50, 1);
+    error_train_for_i  = zeros(50, 1);
+    for j = 1:50
+        training_set_elem = randperm(m)(1:i);
+        val_set_elem = randperm(val_size)(1:i);
+        theta = trainLinearReg(X(training_set_elem,:), y(training_set_elem,:), lambda);
+        error_eval_for_i(j) = linearRegCostFunction(Xval(val_set_elem,:), yval(val_set_elem,:), theta, 0);
+        error_train_for_i(j) = linearRegCostFunction(X(training_set_elem,:), y(training_set_elem,:), theta, 0);
+    end
+    error_val(i) = mean(error_eval_for_i);
+    error_train(i) = mean(error_train_for_i);
 end
 
 
