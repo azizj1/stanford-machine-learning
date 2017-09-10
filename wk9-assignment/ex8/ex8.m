@@ -73,6 +73,9 @@ pause;
 %  probabilities given the estimated Gaussian distribution
 % 
 
+%  Notice how we're using the mu and sigma^2 from X
+%  mu and sigma^2 are our parameters for all x = [x1 x2 ... xn]
+%  from now on, so we want to always use those
 pval = multivariateGaussian(Xval, mu, sigma2);
 
 [epsilon F1] = selectThreshold(yval, pval);
@@ -109,6 +112,9 @@ load('ex8data2.mat');
 p = multivariateGaussian(X, mu, sigma2);
 
 %  Cross-validation set
+%  Notice how we're using the mu and sigma^2 from X
+%  mu and sigma^2 are our parameters for all x = [x1 x2 ... xn]
+%  from now on, so we want to always use those
 pval = multivariateGaussian(Xval, mu, sigma2);
 
 %  Find the best threshold
@@ -118,4 +124,4 @@ fprintf('Best epsilon found using cross-validation: %e\n', epsilon);
 fprintf('Best F1 on Cross Validation Set:  %f\n', F1);
 fprintf('   (you should see a value epsilon of about 1.38e-18)\n');
 fprintf('   (you should see a Best F1 value of 0.615385)\n');
-fprintf('# Outliers found: %d\n\n', sum(p < epsilon));
+fprintf('# Outliers/anomalies found: %d\n\n', sum(p < epsilon));
