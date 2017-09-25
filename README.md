@@ -1,5 +1,5 @@
 # Machine Learning
-Coursera's Machine Learning course by Stanford University provides a broad introduction to machine learning, data mining, and statistical pattern recognition. Topics include: 
+Coursera's [Machine Learning course](https://www.coursera.org/learn/machine-learning) by Stanford University provides a broad introduction to machine learning, data mining, and statistical pattern recognition. Topics include: 
 * Supervised learning
   - parametric/non-parametric algorithms
   - support vector machines with kernels
